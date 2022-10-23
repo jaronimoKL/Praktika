@@ -1,0 +1,19 @@
+{% load static %}
+{% load santehcom_tags %}
+<div class="recently-slider-main">
+    {% get_products as product %}
+    {% for product in product %}
+        <div class="slide">
+            <div class="photo" style="background-image: url({{ product.image.url }})"></div>
+            <a href="{% url 'product_detail' product.slug %}">
+                <div class="title">
+                    <h3 class="h3">{{ product.name|truncatechars:30 }}</h3>
+                </div>
+                <div class="desription">
+                    <div class="price"><h2 class="h2">{{ product.price }} руб.</h2></div>
+                    <div class="buts"></div>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+</div>

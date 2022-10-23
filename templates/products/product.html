@@ -1,0 +1,61 @@
+{% extends 'products/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="product__main">
+        {% for prod in product %}
+            {% if prod.slug == slug %}
+                <div class="product__top-content">
+                    <h1 class="h1">{{ prod.name }}</h1>
+                </div>
+                <div class="product__content">
+                    <div class="product__content-l">
+                        <div class="product__content-l-img" style="background-image: url({{ prod.image.url }})"></div>
+                    </div>
+                    <div class="product__content-r">
+                        <div class="product__content-r-top">
+                            <div class="product__content-r-fav">
+                                <button class="product__content-fav-btn"><i class="bi bi-heart"></i>Like</button>
+                            </div>
+                            <div class="product__content-r-brand">
+                                <a href="#" class="product__content-brand-a">
+                                    {% if prod.brand %}
+                                        {{ prod.brand.name }}
+                                    {% else %}
+                                        No Brand
+                                    {% endif %}
+                                </a>
+                            </div>
+                        </div>
+                        <div class="product__content-r-mid">
+                            <div class="product__content-r-price">
+                                <h2 class="h2 product__content-price">{{ prod.price }} руб./шт</h2>
+                            </div>
+                            <div class="product__content-r-buy">
+                                <button class="product__content-buy-btn">Купить</button>
+                            </div>
+                        </div>
+                        <div class="product__content-r-bot">
+                            <div class="product__content-r-short-descr">
+                                <p class="product__content-short-descr-p">
+                                    {{ prod.description|truncatewords:10 }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product__bot-content">
+                    <div class="product__bot-content-title">
+                        <div class="product__bot-content-title-border">
+                            <h3 class="h3">Описание</h3>
+                        </div>
+                        <div class="product__bot-content-title-border-bot">
+                        </div>
+                    </div>
+                    <div class="product__bot-content-descr">
+                        <p class="product_description">{{ prod.description }}</p>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock content %}

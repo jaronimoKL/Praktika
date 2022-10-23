@@ -1,0 +1,40 @@
+{% extends 'products/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="profile__main">
+        <div class="profile__content-top">
+            <h1 class="h1">Личный кабинет</h1>
+        </div>
+        <div class="profile__content">
+            <div class="profile__content-wrapper">
+                <div class="profile__content-img">
+                    <img class="profile__content-img-img" src="{{ user.profile.avatar.url }}" alt=""></div>
+                <div class="profile__content-username"><h2 class="h2">{{ user.username }}</h2></div>
+            </div>
+        </div>
+        <div class="profile__content-bot">
+            <div class="profile__content-wrapper">
+                <form method="post" enctype="multipart/form-data" class="profile__form">
+                    {% csrf_token %}
+                    <div class="profile__form-wrapper">
+                        <div class="profile__form-item">
+                            <label class="profile__form-item-label">Никнейм:</label>
+                            {{ user_form.username }}
+                            <label class="profile__form-item-label">Email:</label>
+                            {{ user_form.email }}
+                        </div>
+                        <div class="profile__form-change">
+                            <a href="{% url 'password-change' %}" class="profile__form-change">Изменить пароль</a>
+                            <label class="">Изменить аватарку:</label>
+                            {{ profile_form.avatar }}
+                        </div>
+                        <div class="profile__form-btn">
+                            <button type="submit" class="profile__form-btn-save">Сохранить изменения</button>
+                            <button type="reset" class="profile__form-btn-reset">Сбросить</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,95 @@
+{% extends 'products/base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Product Catagories Area Start -->
+    <div class="products-catagories-area d-flex">
+        <div class="san-pro-catagory clearfix">
+            <!-- Single Catagory -->
+            <a href="{% url 'develop' %}" class="category-a grid-1">
+                <div class="single-products-catagory clearfix">
+                    <!-- Hover Content -->
+                    <div class="hover-content">
+                        <div class="line"></div>
+                        <p></p>
+                        <h4>Специальное предложение</h4>
+                    </div>
+                    <img src="{% static 'img/main-img/offer.png' %}" alt="">
+                </div>
+            </a>
+            <!-- Single Catagory -->
+            <a href="{% url 'contact' %}" class="category-a grid-2">
+                <div class="single-products-catagory clearfix">
+                    <!-- Hover Content -->
+                    <div class="hover-content">
+                        <div class="line"></div>
+                        <p></p>
+                        <h4>Консультация и тех. обслуживание</h4>
+                    </div>
+                    <img src="{% static 'img/main-img/call-centre.png' %}" alt="">
+                </div>
+            </a>
+            <!-- Single Catagory -->
+            <a href="{% url 'develop' %}" class="category-a grid-3">
+                <div class="single-products-catagory clearfix">
+                    <!-- Hover Content -->
+                    <div class="hover-content">
+                        <div class="line"></div>
+                        <p></p>
+                        <h4>Новинка ассортимента</h4>
+                    </div>
+                    <img src="{% static 'img/main-img/toilet.png' %}" alt="">
+                </div>
+            </a>
+            <!-- Single Catagory -->
+                <a href="{% url 'catalog-list' %}" class="category-a grid-4">
+                <div class="single-products-catagory clearfix">
+                    <!-- Hover Content -->
+                    <div class="hover-content">
+                        <div class="line"></div>
+                        <p>От 180 руб.</p>
+                        <h4>Трубы</h4>
+                    </div>
+                        <img src="{% static 'img/main-img/trubi.png' %}" alt="">
+                </div>
+            </a>
+            <!-- Single Catagory -->
+            <a href="{% url 'catalog-list' %}" class="category-a grid-5">
+                <div class="single-products-catagory clearfix">
+                    <!-- Hover Content -->
+                    <div class="hover-content">
+                        <div class="line"></div>
+                        <p>От 560 руб.</p>
+                        <h4>Отопление</h4>
+                    </div>
+                    <img src="{% static 'img/main-img/bac-transformed.png' %}" alt="">
+                </div>
+            </a>
+            <!-- Single Catagory -->
+            <a href="{% url 'catalog-list' %}" class="category-a grid-6">
+                <div class="single-products-catagory clearfix">
+                    <!-- Hover Content -->
+                    <div class="hover-content">
+                        <div class="line"></div>
+                        <p>От 160 руб.</p>
+                        <h4>Прочее</h4>
+                    </div>
+                    <img src="{% static 'img/main-img/schetchik-transformed.png' %}" alt="">
+                </div>
+            </a>
+            <!-- Single Catagory -->
+            <a href="{% url 'catalog-list' %}" class="category-a grid-7">
+                <div class="single-products-catagory clearfix">
+                    <!-- Hover Content -->
+                    <div class="hover-content">
+                        <div class="line"></div>
+                        <p>От 2140 руб.</p>
+                        <h4>Санфаянс</h4>
+                    </div>
+                    <img src="{% static 'img/main-img/smesitel-transformed.png' %}" alt="">
+                </div>
+            </a>
+        </div>
+    </div>
+    <!-- Product Catagories Area End -->
+{% endblock content %}
+

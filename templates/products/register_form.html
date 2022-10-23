@@ -1,0 +1,37 @@
+{% extends 'products/base.html' %}
+{% block content %}
+    <div class="register__main">
+        <div class="register__content-top">
+            <h1 class="h1">Регистрация</h1>
+        </div>
+        <div class="register__content">
+            <div class="register__content-wrapper">
+                <div class="main">
+                    <input type="checkbox" id="chk" aria-hidden="true">
+                    <div class="signup signup-enable">
+                        <form method="post" class="signup-form">
+                            {% csrf_token %}
+                            <label for="chk" aria-hidden="true">Зарегистрироваться</label>
+                            {% for f in form %}
+                                {{ f }}
+                                <div class="form-error">{{ f.errors }}</div>
+                            {% endfor %}
+                            <button>Зарегистрироваться</button>
+                        </form>
+                    </div>
+                    <div class="login">
+                        <form method="post">
+                        {% csrf_token %}
+                            <label for="chk" aria-hidden="true"><a href="{% url 'login' %}">Войти</a></label>
+                            {% for d in form %}
+                                {{ d }}
+                                <div class="form-error">{{ d.errors }}</div>
+                            {% endfor %}
+                            <button>Войти</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

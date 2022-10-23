@@ -1,0 +1,92 @@
+{% extends 'products/base.html' %}
+{% load static %}
+{% load santehcom_tags %}
+{% block content %}
+    <section class="catalog-main-content">
+
+        <div class="catalog">
+            <div class="content">
+                {#<div class="catalog__content-wrapper">#}
+                <div class="catalog__content-top">
+                    <h1 class="h1">Каталог</h1>
+                </div>
+                <div class="catalog__content">
+                    {% for product in results_objects %}
+                        <div class="catalog__card elem {{ product.subcategory.slug }}">
+                            <div class="catalog__card-photo">
+                                <a href="{% url 'product_detail' product.slug %}">
+                                    <img src="{{ product.image.url }}" alt="" class="card-photo">
+                                </a>
+                            </div>
+                            <div class="catalog__card-content">
+                                <a href="{% url 'product_detail' product.slug %}" class="catalog__card-a">
+                                    {{ product.name }}
+                                </a>
+                                <div class="catalog__card-description">
+                                    <p class="description">
+                                        {{ product.description }}
+                                    </p>
+                                </div>
+                                <div class="catalog__card-stats"
+                                        {% if product.rate %}
+                                     style="box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);"
+                                        {% endif %}
+                                >
+                                    <img src="{{ product.rate.score.img.url }}" alt="">
+                                </div>
+                            </div>
+                            <div class="catalog__card-buy">
+                                <div class="catalog__buy-price">
+                                    <h2 class="h2">{{ product.price }} руб.</h2>
+                                </div>
+                                <div class="catalog__buy-btn">
+                                    <a href="#" class="btn"><i class="bi bi-heart"></i></a>
+                                    <a href="#" class="btn">Купить</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                {#</div>#}
+            </div>
+            <div class="sidebar">
+                <div class="catalog__sidebar-wrapper">
+                    <div class="catalog__sidebar-search">
+                        {#                        <input type="text" class="catalog__search-input" name="q" placeholder="Поиск">#}
+                        <form action="{% url 'search' %}" method="get" role="search" class="catalog__search-form">
+                            <input id="search" name="q" type="search" placeholder="Поиск..."
+                                   class="catalog__search-input" autofocus required/>
+                            <button type="submit" class="catalog__search-btn"><i class="bi bi-search"></i></button>
+                        </form>
+                    </div>
+                    <div class="catalog__sidebar-price">
+                    </div>
+                    <details class="catalog__sidebar-filter" open>
+                        <summary class="h2 filter-title">
+                            Каталог
+                        </summary>
+                        {% get_categories as category %}
+                        {% get_subcategories as subcategory %}
+                        {% for categ in category %}
+                            <details class="catalog__sidebar-filter-list">
+                                <summary class="filter__item-title">
+                                    {{ categ.name }}
+                                </summary>
+                                {% for subcateg in subcategory %}
+                                    {% if subcateg.category.name == categ.name %}
+                                        <div class="filter__item-wrapper">
+                                            <button class="filter__item {{ subcateg.slug }}"
+                                                    data-filter="{{ subcateg.slug }}">
+                                                {{ subcateg.name }}
+                                            </button>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </details>
+                        {% endfor %}
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

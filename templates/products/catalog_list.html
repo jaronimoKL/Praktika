@@ -1,0 +1,30 @@
+{% extends 'products/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="catalog-list__main">
+        <div class="catalog-list__top">
+            <h1 class="h1">Каталог</h1>
+        </div>
+        <div class="catalog-list__content">
+            {% for cat in category %}
+                <div class="catalog-list__item">
+                    <div class="catalog-list__item-l">
+                        <div class="catalog-list__item-l-img" style="background-image: url({{ cat.image.url }})"></div>
+                    </div>
+                    <div class="catalog-list__item-r">
+                        <ul class="catalog-list__item-list">
+                            <li class="catalog-list__list-title-item">{{ cat.name }}</li>
+                            {% for scat in category_s %}
+                                {% if scat.category.name == cat.name %}
+                                    <a href="{% url 'catalog-list' %}">
+                                        <li class="catalog-list__list-item">{{ scat.name }}</li>
+                                    </a>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}
